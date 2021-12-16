@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyentap cấu trúc điều kiện 1</title>
+</head>
+<body>
+<h2>Bài 1: Nhập vào 2 số a và b và kiểm tra xem a có chia hết cho b hay không</h2>
+<div>
+    <label> Nhập a</label>
+    <input id="a" type="text">
+</div>
+<div>
+    <label> Nhập b</label>
+    <input id="b" type="text">
+</div>
+<p id="inra"></p>
+<button onclick="ktr()">Kiểm tra</button>
+<hr>
+<h2>Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.</h2>
+<div>
+    <label> Nhập tuổi </label>
+    <input id="age" type="text">
+</div>
+<p id="b2_inra"></p>
+<button onclick="bai2()">Kiểm tra</button>
+<hr>
+<h2>Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0</h2>
+<div>
+    <label> Nhập số </label>
+    <input id="num" type="text">
+</div>
+<p id="b3_inra"></p>
+<button onclick="bai3()">Kiểm tra</button>
+<hr>
+<h1> Bài 4:Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó</h1>
+<button onclick="bai4()">Nhập 3 số nguyên</button>
+<hr>
+<h1> Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</h1>
+<div>
+    <label>Điểm thi giữa kỳ :</label>
+    <input id="gk" type="text">
+</div>
+<br>
+<div>
+    <label> Điểm thi cuối kỳ :</label>
+    <input id="ck" type="text">
+</div>
+<p id="b5_inra"></p>
+<button onclick="bai5()">Tính</button>
+<hr>
+<h1>Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng</h1>
+<div>
+    <label> Doanh số bán hàng:</label>
+    <input id="ds" type="text">
+</div>
+<br>
+<button onclick="bai6()"> Hoa Hồng nhận được</button>
+<p id="b6_inra"></p>
+<hr>
+<h1>Bài 7: Tính cước điện thoại cho một hộ gia đình với các thông số đã cho</h1>
+<button onclick="bai7()"> Tính cước</button>
+<script>
+    function ktr(){
+        let an=parseFloat(document.getElementById("a").value)
+        let bn=parseFloat(document.getElementById("b").value)
+        if (an%bn===0) {
+            document.getElementById("inra").innerHTML="a có chia hết cho b"
+        }else {
+            document.getElementById("inra").innerHTML="a không chia hết cho b"
+        }
+    }
+
+    function bai2(){
+        let ag=parseFloat(document.getElementById("age").value)
+        if (ag>=16) {
+            document.getElementById("b2_inra").value="đủ tuổi vào lớp 10"
+        }else {
+            document.getElementById("b2_inra").value="Không đủ tuổi vào lớp 10"
+        }
+    }
+    function bai3() {
+        let sn=parseFloat(document.getElementById("num").value)
+        if (sn>0) {
+            document.getElementById("b3_inra").innerHTML="số này lớn hơn không"
+        }else if (sn<0){
+            document.getElementById("b3_inra").innerHTML="số này nhỏ hơn không"
+        }else {
+            document.getElementById("b3_inra").innerHTML="số này bằng không"
+        }
+    }
+    function bai4 (){
+     let a1 =parseFloat(prompt("nhập số thứ 1"))
+     let b1 =parseFloat(prompt("nhập số thứ 2"))
+     let c1 =parseFloat(prompt("nhập số thứ 3"))
+        let max_4
+        if (a1>b1) {
+            if (a1>c1) {
+                alert("số lớn nhất trong 3 số là " +a1)
+            }
+        }else {
+            if(b1>c1) {
+                alert("số lớn nhất trong 3 số là " +b1)
+            }else {
+                alert("số lớn nhất trong 3 số là " +c1)
+            }
+        }
+    }
+
+    function bai5() {
+        let diem_gk=parseFloat(document.getElementById("gk").value)
+        let diem_ck=parseFloat(document.getElementById("ck").value)
+        let diemtb=diem_gk*0.3+diem_ck*0.7
+        if (diemtb>=8) {
+            document.getElementById("b5_inra").innerHTML="Loai giỏi"
+        } else if(diemtb>=6.5){
+            document.getElementById("b5_inra").innerHTML="Loai khá"
+        }else if (diemtb>=5) {
+            document.getElementById("b5_inra").innerHTML="Loai Trung bình"
+        }else {
+            document.getElementById("b5_inra").innerHTML="Loai yếu"
+        }
+    }
+function bai6(){
+  let doanhso=parseFloat(document.getElementById("ds").value)
+    let hoahong=doanhso*0.1
+    document.getElementById("b6_inra").innerHTML="Hoa Hồng băng :" + hoahong + "VNĐ"
+}
+function bai7() {
+    let sophut = parseFloat(prompt("nhập số phút sử dụng"))
+    const x=25000
+    let phi
+    if (sophut > 200) {
+        phi = (sophut - 200) * 200 + 150 * 400 + 50 * 600;
+    } else if (sophut > 50) {
+        phi = (sophut - 50) * 400 + 50 * 600;
+    } else {
+        phi = sophut * 600;
+    }
+    tong=0.01*phi+ x;
+    alert("Cước phí là " + tong + " Đồng")
+}
+
+</script>
+</body>
+</html>
